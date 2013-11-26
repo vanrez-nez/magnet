@@ -51,7 +51,7 @@ magnet:bottomRight(obj, marginX, marginY)
 magnet:topCenter(obj, marginX, marginY)
 magnet:centerRight(obj, marginX, marginY)
 magnet:bottomCenter(obj, marginX, marginY)
-magnet:centerLeft(obj, marginX, marginY, parent)
+magnet:centerLeft(obj, marginX, marginY)
 ```
 
 Generic Call
@@ -71,4 +71,14 @@ Other utilities
 magnet:getPercentX( percent )
 magnet:getPercentY( percent )
 ```
+
+Gotchas
+======
+When positioning display objects inside snapshots you'll need to provide an additional parameter "parent" as the current snapshot that contains it. Otherwise it wont work!
+```lua
+local snapshot = display.newSnapshot(width, height)
+local circle = display.newCircle(snapshot.group, 0, 0, 10)
+magnet:center(circle, 0, 0, snapshot) --add the parent
+```
+
 

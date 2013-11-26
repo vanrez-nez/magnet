@@ -32,7 +32,7 @@ magnet:updateCurrentOrientation()
 ```
 
 SUPPORTED METHODS:
-Basic Align
+Basic Alignments
 =======
 ```lua
 magnet:top(obj, marginY)
@@ -41,7 +41,7 @@ magnet:bottom(obj, marginY)
 magnet:left(obj, marginX)
 magnet:center(obj, marginX, marginY)
 ```
-Composed Aligns
+Composed Alignments
 =====
 ```lua
 magnet:topLeft(obj, marginX, marginY)
@@ -54,7 +54,7 @@ magnet:bottomCenter(obj, marginX, marginY)
 magnet:centerLeft(obj, marginX, marginY, parent)
 ```
 
-Composed Aligns
+Generic Call
 =====
 Or a generic call with the align as a parameter:
 ```lua

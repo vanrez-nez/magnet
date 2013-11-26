@@ -31,7 +31,6 @@ If you want to reposition after a screen rotation all you need to do is call the
 magnet:updateCurrentOrientation()
 ```
 
-SUPPORTED METHODS:
 Basic Alignments
 =======
 ```lua

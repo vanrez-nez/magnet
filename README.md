@@ -9,20 +9,22 @@ positioning
 ===========
 
 To position you just call the function and pass the displayObject
-'''lua
+```lua
 magnet:topLeft( displayObject )
-
+```
 
 margins
 =======
 
 If you need to have a margin of 10px from the left this is how you do it:
-'''lua
+```lua
 magnet:topLeft( displayObject, 10 )
-
+```
 
 
 =======
+```lua
 magnet:top(obj, marginY, parent)
+```
 
 If you want to reposition after a screen rotation all you need to do is call magnet:updateCurrentOrientation() on the orientation event and reposition your objects

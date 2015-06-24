@@ -73,7 +73,7 @@ magnet:getPercentY( percent )
 
 Gotchas
 ======
-When positioning display objects inside snapshots you'll need to provide an additional parameter "parent" as the current snapshot that contains it. Otherwise it wont work!
+When positioning display objects inside snapshots you'll need to provide an additional parameter "parent" as the current snapshot that contains it. Otherwise it won't work!
 ```lua
 local snapshot = display.newSnapshot(width, height)
 local circle = display.newCircle(snapshot.group, 0, 0, 10)

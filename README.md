@@ -8,9 +8,9 @@ Position Helper for Corona SDK Graphics 2.0
 A module to position display objects on different screen resolutions. This helper will only work with the newest version of Corona (aka 2.0). Anchors and screen orientations are internally managed to provide consistency.
 
 Recent changes:
-⋅⋅* Storyboard replaced with Composer API
-⋅⋅* Refreshed build.settings with portrait orientation as a default
-⋅⋅* Removed all print() logs
+  - _Storyboard_ replaced with _Composer_ API
+  - Refreshed _build.settings_ with portrait orientation as a default
+  - Removed all _print()_ logs
 
 Positioning
 ===========

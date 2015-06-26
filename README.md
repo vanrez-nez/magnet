@@ -5,6 +5,8 @@ Position Helper for Corona SDK Graphics 2.0
 
 A module to position display objects on different screen resolutions. This helper will only work with the newest version of Corona (aka 2.0). Anchors and screen orientations are internally managed to provide consistency.
 
+![Screenshots of Magnet functionality in portrait and landscape](https://www.imageupload.co.uk/images/2015/06/26/magnet_screenshot.png)
+
 Positioning
 ===========
 

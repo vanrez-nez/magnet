@@ -1,7 +1,7 @@
 --game
-local storyboard = require "storyboard"
-local magnet	 = require "lib.magnet"
-local scene      = storyboard.newScene()
+local composer = require ( "composer" )
+local magnet	 = require ( "lib.magnet" )
+local scene      = composer.newScene()
 
 local currentAlignIdx = 1
 local currentCaseIdx = 1
@@ -39,34 +39,39 @@ local function updateAlignment( )
 	end
 end
 
-function scene:createScene( event )
-	local gScene = self.view
+function scene:create( event )
+	local sceneGroup = self.view
 	
-	txtCurrentAlign = display.newEmbossedText( gScene, "", 0, 0, nil, 24 )
+	txtCurrentAlign = display.newEmbossedText( sceneGroup, "", 0, 0, nil, 24 )
 	testRect = display.newRect(0, 0, 25, 25)
-	testRect:setFillColor(0.2)
+	testRect:setFillColor(0.4)
 	testRect:setStrokeColor(1, 0, 0)
 	testRect.strokeWidth = 1
 end
 
-function scene:enterScene( event )
-	local gScene = self.view
-	updateTestCase()
-	updateAlignment()
+function scene:show( event )
+	local sceneGroup = self.view
+    local phase = event.phase
+
+    if ( phase == "will" ) then
+
+	elseif ( phase == "did" ) then
+		updateTestCase()
+		updateAlignment()
+	end
+end
+
+function scene:hide( event )
 	
 end
 
-function scene:exitScene( event )
-	
-end
-
-function scene:didExitScene( event )
+function scene:destroy( event )
 
 end
 
 function updateTestCase()
 	local currentStage = display.getCurrentStage()
-	local currentView = storyboard.getScene(storyboard.getCurrentSceneName()).view
+	local currentView = composer.getScene(composer.getSceneName( "current" )).view
 	updateParentAlignment = false
 
 	if currentCaseIdx > 4 then
@@ -87,7 +92,7 @@ function updateTestCase()
 	elseif currentCaseIdx == 3 then
 		testContainer = display.newContainer(100, 100)
 		local bgFill = display.newRect( testContainer, 0, 0, 100, 100 )
-		bgFill:setFillColor(0.1, 0.5)
+		bgFill:setFillColor(0.4, 0.4)
 		testContainer:insert(bgFill)
 		currentView:insert(testContainer)
 		parent = testContainer
@@ -100,7 +105,6 @@ function updateTestCase()
 		currentView:insert(testSnapshot)
 		testSnapshot.clearColor = {1,0,0}
 		updateParentAlignment = true
-		--print(inspect(testSnapshot.group))
 	end
 	currentParent = parent
 end
@@ -121,10 +125,10 @@ local function onOrientationChange( event )
    updateAlignment()
 end
 
-scene:addEventListener( "createScene", scene )
-scene:addEventListener( "enterScene", scene )
-scene:addEventListener( "exitScene", scene )
-scene:addEventListener( "didExitScene", scene )
+scene:addEventListener( "create", scene )
+scene:addEventListener( "show", scene )
+scene:addEventListener( "hide", scene )
+scene:addEventListener( "destroy", scene )
 
 Runtime:addEventListener("orientation", onOrientationChange )
 Runtime:addEventListener("tap", onScreenTap)

@@ -4,7 +4,7 @@
 -- License: MIT 
 -- Version: 2.0
 
-local storyboard = require "storyboard"
+local composer = require "composer"
 local magnet = {}
 
 local width, height, originX, originY
@@ -15,10 +15,6 @@ function magnet:updateCurrentOrientation()
 	height 	= display.actualContentHeight
 	originX = display.screenOriginX
 	originY = display.screenOriginY
-	print("system.orientation")
-	if string.sub(system.orientation, 1, 9) == "landscape" then
-		width, height = height, width	
-	end
 end
 
 -- exposed attr
@@ -26,7 +22,7 @@ magnet.screenWidth 	= width
 magnet.screenHeight = height
 
 function isRelativeToParent( obj )
-	local currentView = storyboard.getScene(storyboard.getCurrentSceneName()).view
+	local currentView = composer.getScene(composer.getSceneName( "current" )).view
 	local currentStage = display.getCurrentStage()
 	return obj.parent ~= nil and not (obj.parent == currentStage or obj.parent == currentView)
 end
